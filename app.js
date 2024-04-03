@@ -7,7 +7,23 @@ const GI = {
 }
 const createListElement = (item) => {
     const list = document.getElementById("list");
-    list.innerHTML += "<li><div><p>" + item + "</p><input type=\"checkbox\" /></div></li>  "
+    const listItem = document.createElement('li');
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    const label = document.createElement('label');
+    label.textContent = item;
+
+    checkbox.addEventListener('change', function () {
+        if (checkbox.checked) {
+            label.classList.add('completed');
+        } else {
+            label.classList.remove('completed');
+        }
+    });
+
+    listItem.appendChild(checkbox);
+    listItem.appendChild(label);
+    list.appendChild(listItem);
 }
 
 
